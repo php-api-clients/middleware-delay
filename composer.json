@@ -10,7 +10,8 @@
   ],
   "require": {
     "php": "^7.0",
-    "api-clients/middleware": "^1.0"
+    "api-clients/middleware": "^1.0",
+    "wyrihaximus/ticking-promise": "^1.6"
   },
   "require-dev": {
     "api-clients/test-utilities": "^2.0"

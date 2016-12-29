@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9e1fa6276bead68f87bc1d47a9b7bf89",
-    "content-hash": "91423b256f7e2fd0a777cb0e9e7cca7c",
+    "hash": "e79212340aca0e5617427de5a5dbd5cd",
+    "content-hash": "4f49c1f5f05a5a99f6fa03a72a4e2732",
     "packages": [
         {
             "name": "api-clients/middleware",
@@ -105,6 +105,50 @@
             "time": "2016-08-06 14:39:51"
         },
         {
+            "name": "react/event-loop",
+            "version": "v0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/event-loop.git",
+                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/164799f73175e1c80bba92a220ea35df6ca371dd",
+                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "suggest": {
+                "ext-event": "~1.0",
+                "ext-libev": "*",
+                "ext-libevent": ">=0.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "React\\EventLoop\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Event loop abstraction layer that libraries can use for evented I/O.",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2016-03-08 02:09:32"
+        },
+        {
             "name": "react/promise",
             "version": "v2.5.0",
             "source": {
@@ -146,6 +190,52 @@
                 "promises"
             ],
             "time": "2016-12-22 14:09:01"
+        },
+        {
+            "name": "wyrihaximus/ticking-promise",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/TickingPromise.git",
+                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/TickingPromise/zipball/8d26b1458e32c367ba6fb8ad5042046279acdb12",
+                "reference": "8d26b1458e32c367ba6fb8ad5042046279acdb12",
+                "shasum": ""
+            },
+            "require": {
+                "react/event-loop": "^0.4",
+                "react/promise": "~2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4",
+                "squizlabs/php_codesniffer": "^1.5.6",
+                "vectorface/dunit": "~1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\React\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "Wrapping ticks into a promise",
+            "time": "2016-03-05 20:23:05"
         }
     ],
     "packages-dev": [
@@ -1120,50 +1210,6 @@
                 "xunit"
             ],
             "time": "2016-12-08 20:27:08"
-        },
-        {
-            "name": "react/event-loop",
-            "version": "v0.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/event-loop.git",
-                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/164799f73175e1c80bba92a220ea35df6ca371dd",
-                "reference": "164799f73175e1c80bba92a220ea35df6ca371dd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "suggest": {
-                "ext-event": "~1.0",
-                "ext-libev": "*",
-                "ext-libevent": ">=0.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\EventLoop\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Event loop abstraction layer that libraries can use for evented I/O.",
-            "keywords": [
-                "asynchronous",
-                "event-loop"
-            ],
-            "time": "2016-03-08 02:09:32"
         },
         {
             "name": "react/promise-timer",
