@@ -26,8 +26,10 @@ final class DelayMiddlewareTest extends TestCase
         ];
         $middleware = new DelayMiddleware($loop);
         $preCalled = false;
-        $middleware->pre($request->reveal(), $options)->then(function () use (&$preCalled) {
-            $preCalled = true;
+        $loop->futureTick(function () use (&$preCalled, $middleware, $request, $options) {
+            $middleware->pre($request->reveal(), $options)->then(function () use (&$preCalled) {
+                $preCalled = true;
+            });
         });
 
         self::assertFalse($preCalled);
@@ -39,7 +41,7 @@ final class DelayMiddlewareTest extends TestCase
         $stop = microtime(true);
 
         self::assertNotSame($start + 3, $stop);
-        self::assertTrue($start + 3 < $stop, $start + 3 . ' vs ' . $stop);
+        self::assertTrue($start + 3 <= $stop, $start + 3 . ' vs ' . $stop);
 
         self::assertTrue($preCalled);
     }
