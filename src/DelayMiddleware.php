@@ -2,6 +2,7 @@
 
 namespace ApiClients\Middleware\Delay;
 
+use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
 use ApiClients\Foundation\Middleware\Priority;
@@ -14,6 +15,7 @@ use function WyriHaximus\React\timedPromise;
 final class DelayMiddleware implements MiddlewareInterface
 {
     use PostTrait;
+    use ErrorTrait;
 
     /**
      * @var LoopInterface
