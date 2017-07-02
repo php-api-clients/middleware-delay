@@ -2,10 +2,10 @@
 
 namespace ApiClients\Middleware\Delay;
 
+use ApiClients\Foundation\Middleware\Annotation\Second;
 use ApiClients\Foundation\Middleware\ErrorTrait;
 use ApiClients\Foundation\Middleware\MiddlewareInterface;
 use ApiClients\Foundation\Middleware\PostTrait;
-use ApiClients\Foundation\Middleware\Priority;
 use Psr\Http\Message\RequestInterface;
 use React\EventLoop\LoopInterface;
 use React\Promise\CancellablePromiseInterface;
@@ -35,9 +35,14 @@ final class DelayMiddleware implements MiddlewareInterface
      * @param RequestInterface $request
      * @param array $options
      * @return CancellablePromiseInterface
+     *
+     * @Second()
      */
-    public function pre(RequestInterface $request, array $options = []): CancellablePromiseInterface
-    {
+    public function pre(
+        RequestInterface $request,
+        string $transactionId,
+        array $options = []
+    ): CancellablePromiseInterface {
         if (!isset($options[self::class][Options::DELAY])) {
             return resolve($request);
         }
@@ -49,13 +54,5 @@ final class DelayMiddleware implements MiddlewareInterface
         )->then(function (RequestInterface $request) {
             return resolve($request);
         });
-    }
-
-    /**
-     * @return int
-     */
-    public function priority(): int
-    {
-        return Priority::FIRST - 1;
     }
 }
