@@ -32,8 +32,8 @@ final class DelayMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @param RequestInterface $request
-     * @param array $options
+     * @param  RequestInterface            $request
+     * @param  array                       $options
      * @return CancellablePromiseInterface
      *
      * @Second()
