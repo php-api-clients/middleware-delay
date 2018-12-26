@@ -8,9 +8,12 @@ use ApiClients\Tools\TestUtilities\TestCase;
 use Psr\Http\Message\RequestInterface;
 use React\EventLoop\Factory;
 
+/**
+ * @internal
+ */
 final class DelayMiddlewareTest extends TestCase
 {
-    public function testRequest()
+    public function testRequest(): void
     {
         $loop = Factory::create();
 
@@ -23,19 +26,19 @@ final class DelayMiddlewareTest extends TestCase
         ];
         $middleware = new DelayMiddleware($loop);
         $preCalled = false;
-        $loop->futureTick(function () use (&$preCalled, $middleware, $request, $options) {
-            $middleware->pre($request->reveal(), 'abc', $options)->then(function () use (&$preCalled) {
+        $loop->futureTick(function () use (&$preCalled, $middleware, $request, $options): void {
+            $middleware->pre($request->reveal(), 'abc', $options)->then(function () use (&$preCalled): void {
                 $preCalled = true;
             });
         });
 
         self::assertFalse($preCalled);
 
-        $start = microtime(true);
+        $start = \microtime(true);
 
         $loop->run();
 
-        $stop = microtime(true);
+        $stop = \microtime(true);
 
         self::assertNotSame($start + 3, $stop);
         self::assertTrue($start + 3 <= $stop, $start + 3 . ' vs ' . $stop);
@@ -43,14 +46,14 @@ final class DelayMiddlewareTest extends TestCase
         self::assertTrue($preCalled);
     }
 
-    public function testRequestNoDelay()
+    public function testRequestNoDelay(): void
     {
         $request = $this->prophesize(RequestInterface::class);
 
         $options = [];
         $middleware = new DelayMiddleware(Factory::create());
         $preCalled = false;
-        $middleware->pre($request->reveal(), 'abc', $options)->then(function () use (&$preCalled) {
+        $middleware->pre($request->reveal(), 'abc', $options)->then(function () use (&$preCalled): void {
             $preCalled = true;
         });
 
